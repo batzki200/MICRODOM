@@ -327,8 +327,9 @@ a {
 }
 
 .hero__strip-item span {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 28px;
-  font-weight: 900;
   letter-spacing: 0;
   color: #ff5138;
 }
@@ -498,8 +499,9 @@ a {
 }
 
 .price-card__price {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 30px;
-  font-weight: 800;
   color: var(--accent);
   letter-spacing: -0.02em;
   margin-bottom: 4px;
@@ -544,8 +546,9 @@ a {
   border-radius: 50%;
   background: var(--accent);
   color: #fff;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 22px;
-  font-weight: 800;
   margin-bottom: 18px;
 }
 
@@ -645,6 +648,8 @@ a {
 }
 
 .call-cta__title span {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   color: #ffb09f;
 }
 
@@ -766,8 +771,9 @@ a {
 
 .about__years span {
   display: block;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 44px;
-  font-weight: 800;
   color: var(--accent);
 }
 
