@@ -1137,6 +1137,16 @@ a {
 }
 
 /* ===== Responsive ===== */
+@media (max-width: 1200px) {
+  .hero__inner {
+    padding: 76px 0 68px;
+  }
+
+  .hero__strip-inner {
+    gap: 44px;
+  }
+}
+
 @media (max-width: 1024px) {
   .services__grid,
   .prices__grid {
@@ -1154,6 +1164,29 @@ a {
   .contact-form__inner {
     grid-template-columns: 1fr;
   }
+
+  .hero__title {
+    font-size: clamp(30px, 5vw, 46px);
+  }
+
+  .hero__subtitle {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero__badge {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+  }
+
+  .hero__strip-item {
+    font-size: 12px;
+  }
+
+  .contacts__list {
+    grid-template-columns: 150px 1fr;
+  }
 }
 
 @media (max-width: 768px) {
@@ -1161,11 +1194,19 @@ a {
     display: none;
   }
 
+  .header__inner {
+    height: 64px;
+  }
+
+  .nav {
+    top: 64px;
+  }
+
   .about__inner,
   .contacts__inner,
   .call-cta__inner {
     grid-template-columns: 1fr;
-    gap: 40px;
+    gap: 36px;
   }
 
   .call-cta__visual {
@@ -1177,17 +1218,31 @@ a {
   }
 
   .contacts__map-link iframe {
-    height: 320px;
+    height: 300px;
   }
 
   .hero__inner {
-    padding: 64px 0 56px;
+    padding: 56px 0 48px;
+  }
+
+  .hero__badge {
+    margin-bottom: 18px;
+  }
+
+  .hero__title {
+    font-size: clamp(28px, 6.5vw, 42px);
+    line-height: 1.15;
   }
 
   .hero__strip-inner {
-    gap: 28px;
     flex-wrap: wrap;
-    padding: 16px 16px;
+    justify-content: center;
+    gap: 14px 36px;
+    padding: 14px 16px;
+  }
+
+  .hero__strip-item {
+    letter-spacing: 0.05em;
   }
 
   .feature,
@@ -1201,9 +1256,132 @@ a {
     grid-template-columns: 1fr;
     gap: 4px;
   }
+
+  .features,
+  .services,
+  .prices,
+  .steps,
+  .call-cta,
+  .about,
+  .reviews,
+  .contacts {
+    padding-top: 56px;
+    padding-bottom: 56px;
+  }
+
+  .section-head {
+    margin-bottom: 32px;
+  }
+
+  .footer__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 8px;
+  }
 }
 
-@media (max-width: 520px) {
+@media (max-width: 600px) {
+  .nav {
+    top: 60px;
+  }
+
+  .logo__img {
+    width: 36px;
+    height: 36px;
+  }
+
+  .logo__text {
+    font-size: 19px;
+    height: 36px;
+    line-height: 36px;
+  }
+
+  .header__inner {
+    height: 60px;
+    gap: 12px;
+  }
+
+  .burger span {
+    width: 22px;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .hero__inner {
+    padding: 44px 0 40px;
+  }
+
+  .hero__badge {
+    flex-wrap: wrap;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+  }
+
+  .hero__badge-mark {
+    width: 11px;
+    height: 11px;
+  }
+
+  .hero__title {
+    font-size: clamp(24px, 7.5vw, 34px);
+    letter-spacing: 0;
+  }
+
+  .hero__subtitle {
+    font-size: 15px;
+    margin-bottom: 26px;
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+  }
+
+  .hero__strip-inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px;
+  }
+
+  .hero__strip-item {
+    font-size: 12px;
+  }
+
+  .hero__strip-item span {
+    font-size: 24px;
+  }
+
+  .field__input {
+    font-size: 16px;
+  }
+
+  .call-cta__title {
+    font-size: clamp(24px, 6vw, 32px);
+  }
+
+  .call-cta__phone-num {
+    font-size: 17px;
+  }
+
+  .price-card__price {
+    font-size: 26px;
+  }
+
+  .contacts__form-wrap {
+    padding: 24px 20px;
+  }
+}
+
+@media (max-width: 480px) {
   .services__grid,
   .prices__grid,
   .features__grid,
@@ -1217,8 +1395,16 @@ a {
     width: 100%;
   }
 
-  .container {
-    padding: 0 16px;
+  .section-title {
+    font-size: 26px;
+  }
+
+  .contacts__list {
+    gap: 16px;
+  }
+
+  .about__years span {
+    font-size: 36px;
   }
 }
 
