@@ -1,0 +1,37 @@
+# ===== Безопасность =====
+
+# 1. Переезд на короткий домен: microdomservice.by -> microdom.by (301)
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteCond %{HTTP_HOST} ^(www\.)?microdomservice\.by$ [NC]
+  RewriteRule ^(.*)$ https://microdom.by/$1 [L,R=301]
+  # 2. Принудительный HTTPS (кроме Docker/dev без TLS)
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP:X-Forwarded-Proto} !=https
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+</IfModule>
+
+# 3. Запрет прямого доступа к служебным каталогам
+<IfModule mod_rewrite.c>
+  RewriteRule ^(leads|vendor)/ - [F,L]
+</IfModule>
+
+# 4. Секьюрити-заголовки
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set X-Frame-Options "DENY"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
+  Header unset X-Powered-By
+
+  # HSTS — только по HTTPS
+  <If "%{HTTPS} == 'on'">
+    Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  </If>
+
+  # CSP: свой скрипт/стили, Google Fonts, iframe карты Google
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+</IfModule>
+
+# 5. Наложение каталогов / индексация
+Options -Indexes
