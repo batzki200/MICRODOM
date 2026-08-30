@@ -29,8 +29,8 @@
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   </If>
 
-  # CSP: свой скрипт/стили, Google Fonts, iframe карты Google
-  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-src https://www.google.com; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
+  # CSP: свой скрипт/стили, Google Fonts, iframe карты Google и виджет отзывов Яндекс.Карт
+  Header always set Content-Security-Policy "default-src 'self'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self'; frame-src https://www.google.com https://maps.google.com https://yandex.ru; connect-src 'self'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'"
 </IfModule>
 
 # 5. Наложение каталогов / индексация
