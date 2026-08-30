@@ -2,4 +2,7 @@
 leads/
 
 # Локальные серверные логи
-*.logvendor/
+*.log
+
+# Composer-зависимости
+vendor/
