@@ -24,7 +24,7 @@
   Header always set Permissions-Policy "geolocation=(), microphone=(), camera=()"
   Header unset X-Powered-By
 
-  # HSTS — только по HTTPS
+  # HSTS - только по HTTPS
   <If "%{HTTPS} == 'on'">
     Header set Strict-Transport-Security "max-age=31536000; includeSubDomains"
   </If>

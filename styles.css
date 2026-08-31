@@ -78,10 +78,10 @@ a {
 
 .logo__text {
   display: block;
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 800;
-  line-height: 44px;
-  height: 44px;
+  line-height: 56px;
+  height: 56px;
   letter-spacing: 0.02em;
   color: var(--dark);
 }
@@ -91,8 +91,8 @@ a {
 }
 
 .logo__img {
-  width: 44px;
-  height: 44px;
+  width: 56px;
+  height: 56px;
   border-radius: 10px;
 }
 
@@ -734,7 +734,7 @@ a {
 }
 
 .srv-box__list li::before {
-  content: '—';
+  content: '-';
   position: absolute;
   left: 0;
   top: 0;
@@ -1186,14 +1186,14 @@ a {
   }
 
   .logo__img {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
   }
 
   .logo__text {
-    font-size: 19px;
-    height: 36px;
-    line-height: 36px;
+    font-size: 23px;
+    height: 44px;
+    line-height: 44px;
   }
 
   .header__inner {

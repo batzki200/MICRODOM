@@ -7,7 +7,7 @@ declare(strict_types=1);
  *
  * Антиспам:
  *  - honeypot-поле: заполняют только боты (отбрасываем молча);
- *  - скорость заполнения: быстрее 3 секунд — бот;
+ *  - скорость заполнения: быстрее 3 секунд - бот;
  *  - валидация номера и e-mail;
  *  - rate limiting по IP: не более RATE_LIMIT_PER_HOUR заявок в час.
  * Fallback-заявки в leads/ старее LEADS_TTL_DAYS удаляются автоматически.
@@ -104,7 +104,7 @@ if (clean('company') !== '') {
     exit;
 }
 
-// 2. Скорость заполнения: меньше MIN_SECONDS секунд — бот.
+// 2. Скорость заполнения: меньше MIN_SECONDS секунд - бот.
 if (isset($_POST['start'], $_POST['sent_at'])) {
     $elapsed = ((int)$_POST['sent_at'] - (int)$_POST['start']) / 1000;
     if ($elapsed < MIN_SECONDS) {
@@ -146,14 +146,14 @@ if (mb_strlen($device) > 120 || mb_strlen($message) > 2000) {
 $subject = 'Новая заявка с сайта: ' . ($name !== '' ? $name : 'без имени');
 
 $bodyLines = [
-    'Имя: ' . ($name !== '' ? $name : '—'),
+    'Имя: ' . ($name !== '' ? $name : '-'),
     'Телефон: ' . $phone,
-    'E-mail: ' . ($email !== '' ? $email : '—'),
-    'Модель ноутбука: ' . ($device !== '' ? $device : '—'),
-    'Проблема: ' . ($message !== '' ? $message : '—'),
+    'E-mail: ' . ($email !== '' ? $email : '-'),
+    'Модель ноутбука: ' . ($device !== '' ? $device : '-'),
+    'Проблема: ' . ($message !== '' ? $message : '-'),
     '',
     'Отправлено: ' . date('d.m.Y H:i'),
-    'IP: ' . ($_SERVER['REMOTE_ADDR'] ?? '—'),
+    'IP: ' . ($_SERVER['REMOTE_ADDR'] ?? '-'),
 ];
 $body = implode("\r\n", $bodyLines);
 
@@ -165,7 +165,7 @@ use PHPMailer\PHPMailer\Exception;
 $mail = new PHPMailer(true);
 
 // Настройки SMTP из переменных окружения (для контейнера/Mailpit и хостинга).
-// На хостинге можно оставить пустыми — тогда используем встроенный mail().
+// На хостинге можно оставить пустыми - тогда используем встроенный mail().
 $smtpHost = getenv('SMTP_HOST') ?: '';
 $smtpPort = getenv('SMTP_PORT') ?: 587;
 $smtpUser = getenv('SMTP_USER') ?: '';
@@ -214,7 +214,7 @@ if ($smtpHost !== '') {
     $sent = @mail(TO_EMAIL, $subject, $body, implode("\r\n", $headers));
 }
 
-// Если почта не отправлена — сохраняем заявку в файлы leads/ как fallback.
+// Если почта не отправлена - сохраняем заявку в файлы leads/ как fallback.
 if (!$sent) {
     $dir = __DIR__ . '/leads';
     if (!is_dir($dir)) {
