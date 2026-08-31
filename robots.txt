@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
+Disallow: /services/
 
 Sitemap: https://microdom.by/sitemap.xml
