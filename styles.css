@@ -78,10 +78,11 @@ a {
 
 .logo__text {
   display: block;
-  font-size: 28px;
-  font-weight: 800;
-  line-height: 56px;
-  height: 56px;
+  font-family: 'Alfa Slab One', serif;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 50px;
+  height: 50px;
   letter-spacing: 0.02em;
   color: var(--dark);
 }
@@ -91,8 +92,8 @@ a {
 }
 
 .logo__img {
-  width: 56px;
-  height: 56px;
+  width: 50px;
+  height: 50px;
   border-radius: 10px;
 }
 
@@ -1186,14 +1187,16 @@ a {
   }
 
   .logo__img {
-    width: 44px;
-    height: 44px;
+    width: 40px;
+    height: 40px;
   }
 
   .logo__text {
-    font-size: 23px;
-    height: 44px;
-    line-height: 44px;
+    font-family: 'Alfa Slab One', serif;
+    font-size: 20px;
+    font-weight: 400;
+    height: 40px;
+    line-height: 40px;
   }
 
   .header__inner {
