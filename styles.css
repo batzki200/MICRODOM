@@ -389,15 +389,13 @@ a {
   transition: background 0.2s, border-color 0.2s;
 }
 
-.price-row::after {
-  content: '→';
-  position: absolute;
-  right: 26px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  color: var(--accent);
-  opacity: 0.5;
+.price-row__price::after {
+  content: '';
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8402b' stroke-width='6' stroke-linecap='square' stroke-linejoin='miter'%3E%3Cpolyline points='8 5 16 12 8 19'/%3E%3C/svg%3E") center / contain no-repeat;
+  opacity: 1;
   transition: opacity 0.2s, transform 0.2s;
 }
 
@@ -413,14 +411,15 @@ a {
   color: var(--accent);
 }
 
-.price-row:hover::after {
+.price-row:hover .price-row__price::after {
   opacity: 1;
-  transform: translate(3px, -50%);
+  transform: translateX(3px);
 }
 
 .price-row__name {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 16px;
-  font-weight: 600;
   color: var(--dark);
 }
 
@@ -438,6 +437,9 @@ a {
   letter-spacing: -0.01em;
   text-align: right;
   white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .prices__note {
@@ -860,7 +862,8 @@ a {
 
 .contacts__list li {
   display: grid;
-  grid-template-columns: 150px 1fr;
+  grid-template-columns: auto 1fr;
+  align-items: baseline;
   gap: 16px;
 }
 
@@ -870,11 +873,16 @@ a {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.05em;
+  white-space: nowrap;
 }
 
 .contacts__value {
   font-size: 15px;
   line-height: 1.6;
+  white-space: nowrap;
+  justify-self: end;
+  text-align: right;
+  min-width: 0;
 }
 
 .contacts__value a {
@@ -1091,7 +1099,7 @@ a {
   }
 
   .contacts__list {
-    grid-template-columns: 150px 1fr;
+    grid-template-columns: 1fr;
   }
 }
 
@@ -1184,8 +1192,23 @@ a {
   }
 
   .contacts__list li {
-    grid-template-columns: 1fr;
-    gap: 4px;
+    grid-template-columns: minmax(130px, 1fr) auto;
+    gap: 8px 10px;
+    align-items: baseline;
+  }
+
+  .contacts__label {
+    white-space: normal;
+    font-size: clamp(9px, 3vw, 13px);
+    line-height: 1.3;
+    min-width: 0;
+  }
+
+  .contacts__value {
+    white-space: nowrap;
+    justify-self: end;
+    text-align: right;
+    min-width: 0;
   }
 
   .prices,
@@ -1286,18 +1309,28 @@ a {
   }
 
   .price-row {
-    grid-template-columns: 1fr auto;
-    gap: 8px 16px;
-    padding: 16px 48px 16px 20px;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 8px 12px;
+    padding: 16px 20px;
+  }
+
+  .price-row__name {
+    font-family: 'Russo One', Arial, sans-serif;
+    font-weight: 400;
+    font-size: clamp(14px, 3.2vw, 16px);
+    grid-column: 1;
+    grid-row: 1;
   }
 
   .price-row__note {
-    grid-column: 1 / -1;
-    text-align: left;
+    display: none;
   }
 
   .price-row__price {
-    font-size: 18px;
+    font-size: clamp(16px, 3.8vw, 18px);
+    grid-column: 2;
+    grid-row: 1;
+    justify-self: end;
   }
 
   .srv-time {
@@ -1333,12 +1366,16 @@ a {
   }
 
   .contacts__list {
-    gap: 16px;
+    gap: 12px;
+  }
+
+  .contacts__list li:nth-child(4) .contacts__value {
+    white-space: normal;
+    text-align: right;
   }
 }
 
-/* Узкие экраны (<480px): «диагностика при ремонте» не помещается
-   в колонку одной строкой — разрешаем перенос; и ужимаем паддинги полосы */
+/* Очень узкие экраны (<480px): ужимаем полосу, разрешаем перенос подписей */
 @media (max-width: 480px) {
   .hero__strip-inner {
     padding: 14px 8px;
@@ -1347,6 +1384,14 @@ a {
 
   .hero__strip-item {
     white-space: normal;
+  }
+}
+
+/* Сверх-узкие экраны (<380px): убираем правый запас под стрелку —
+   иконка теперь в ячейке цены, сама резервирует место */
+@media (max-width: 380px) {
+  .price-row {
+    padding: 16px 20px;
   }
 }
 
