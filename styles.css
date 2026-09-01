@@ -26,6 +26,8 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 88px;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
@@ -327,7 +329,7 @@ a {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.hero__strip-item span {
+.hero__strip-item > span:first-child {
   font-family: 'Russo One', Arial, sans-serif;
   font-weight: 400;
   font-size: 28px;
@@ -1141,19 +1143,44 @@ a {
   }
 
   .hero__title {
-    font-size: clamp(28px, 6.5vw, 42px);
+    font-size: clamp(18px, 5vw, 42px);
     line-height: 1.15;
+    white-space: nowrap;
+    margin-left: 20px;
+  }
+
+  .hero__badge,
+  .hero__subtitle,
+  .hero__actions {
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .hero__strip-inner {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px 36px;
-    padding: 14px 16px;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px 8px;
+    padding: 16px 10px;
   }
 
   .hero__strip-item {
-    letter-spacing: 0.05em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 6px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: clamp(6.5px, 1.8vw, 10.8px);
+    line-height: 1.35;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .hero__strip-item > span:first-child {
+    font-family: 'Russo One', Arial, sans-serif;
+    font-size: clamp(13px, 4.5vw - 2.5px, 26px);
+    line-height: 1;
   }
 
   .contacts__list li {
@@ -1209,7 +1236,7 @@ a {
   }
 
   .container {
-    padding: 0 16px;
+    padding: 0 20px;
   }
 
   .hero__inner {
@@ -1229,8 +1256,8 @@ a {
   }
 
   .hero__title {
-    font-size: clamp(24px, 7.5vw, 34px);
     letter-spacing: 0;
+    white-space: nowrap;
   }
 
   .hero__subtitle {
@@ -1241,6 +1268,8 @@ a {
   .hero__actions {
     flex-direction: column;
     gap: 12px;
+    margin-left: 20px;
+    margin-right: 20px;
   }
 
   .hero__actions .btn {
@@ -1248,18 +1277,8 @@ a {
   }
 
   .hero__strip-inner {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    padding: 16px;
-  }
-
-  .hero__strip-item {
-    font-size: 12px;
-  }
-
-  .hero__strip-item span {
-    font-size: 24px;
+    gap: 8px 10px;
+    padding: 14px 12px;
   }
 
   .field__input {
@@ -1315,6 +1334,19 @@ a {
 
   .contacts__list {
     gap: 16px;
+  }
+}
+
+/* Узкие экраны (<480px): «диагностика при ремонте» не помещается
+   в колонку одной строкой — разрешаем перенос; и ужимаем паддинги полосы */
+@media (max-width: 480px) {
+  .hero__strip-inner {
+    padding: 14px 8px;
+    gap: 8px 6px;
+  }
+
+  .hero__strip-item {
+    white-space: normal;
   }
 }
 
