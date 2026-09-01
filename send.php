@@ -29,8 +29,9 @@ const RATE_WINDOW_SEC = 3600;
 // Fallback-заявки храним максимум столько дней (ПДн клиентов).
 const LEADS_TTL_DAYS = 60;
 
-function respondError(string $message): void
+function respondError(string $message, int $status = 200): void
 {
+    http_response_code($status);
     echo json_encode(['ok' => false, 'error' => $message], JSON_UNESCAPED_UNICODE);
     exit;
 }
@@ -116,7 +117,15 @@ if (isset($_POST['start'], $_POST['sent_at'])) {
 // 3. Rate limiting: после honeypot и проверки скорости,
 //    чтобы не считать бототрафик, но блокировать повторные всплески.
 if (rateLimitExceeded()) {
-    respondError('Слишком много заявок за короткое время. Попробуйте позже или позвоните нам.');
+    respondError('Слишком много заявок за короткое время. Попробуйте позже или позвоните нам.', 429);
+}
+
+// 4. CSRF (double-submit): значение в скрытом поле формы должно совпадать
+//    с cookie csrf_token, который выдал token.php. Защита от отправки с чужих сайтов.
+if (!isset($_COOKIE['csrf_token'], $_POST['csrf'])
+    || !is_string($_POST['csrf'])
+    || !hash_equals($_COOKIE['csrf_token'], $_POST['csrf'])) {
+    respondError('Сессия устарела. Обновите страницу и попробуйте снова.', 403);
 }
 
 $name    = clean('name');
@@ -125,7 +134,7 @@ $email   = clean('email');
 $device  = clean('device');
 $message = clean('message');
 
-// 3. Валидация
+// 5. Валидация
 if ($name === '' || mb_strlen($name) > 100) {
     respondError('Укажите ваше имя.');
 }
@@ -142,7 +151,7 @@ if (mb_strlen($device) > 120 || mb_strlen($message) > 2000) {
     respondError('Слишком длинный текст.');
 }
 
-// 4. Формируем письмо
+// 6. Формируем письмо
 $subject = 'Новая заявка с сайта: ' . ($name !== '' ? $name : 'без имени');
 
 $bodyLines = [

@@ -22,6 +22,19 @@ if (form) {
 
   const formStart = Date.now();
 
+  fetch('token.php')
+    .then((res) => res.json())
+    .then((t) => {
+      if (form && t && t.token) {
+        const csrf = document.createElement('input');
+        csrf.type = 'hidden';
+        csrf.name = 'csrf';
+        csrf.value = t.token;
+        form.appendChild(csrf);
+      }
+    })
+    .catch(() => {});
+
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 

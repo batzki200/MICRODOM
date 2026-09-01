@@ -78,7 +78,7 @@ a {
 
 .logo__text {
   display: block;
-  font-family: 'Alfa Slab One', serif;
+  font-family: 'Russo One', Arial, sans-serif;
   font-size: 24px;
   font-weight: 400;
   line-height: 50px;
@@ -1192,7 +1192,7 @@ a {
   }
 
   .logo__text {
-    font-family: 'Alfa Slab One', serif;
+    font-family: 'Russo One', Arial, sans-serif;
     font-size: 20px;
     font-weight: 400;
     height: 40px;

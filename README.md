@@ -2,6 +2,11 @@
 
 Статический сайт (HTML/CSS/JS) + PHP-обработчик заявок. Одностраничник, адаптивный, тёмная тема.
 
+## Первая версия
+
+Самая первая версия сайта (hero-блок без фоновой картинки):
+https://github.com/batzki200/MICRODOM/tree/529ec9b44997caffc970ecdae941b87cca9f693e
+
 ## Структура
 
 ```
@@ -44,7 +49,8 @@ php -S 0.0.0.0:8000 -t microdom-service
 Ответ: `{"ok":true}` или `{"ok":false,"error":"..."}`.
 Антиспам: honeypot-поле `company`, проверка времени заполнения (<3 сек - бот),
 валидация телефона/email на сервере, rate limiting по IP
-(не более 5 заявок/час с одного адреса, счётчики в `leads/rate/`).
+(не более 5 заявок/час с одного адреса, счётчики в `leads/rate/`, ответ 429),
+CSRF-токен (`token.php` + скрытое поле формы, double-submit).
 
 Fallback-заявки из `leads/` старше 60 дней удаляются автоматически при отправке.
 Каталог `leads/` закрыт от прямого доступа (`.htaccess` и правило в корневом `.htaccess`).
@@ -55,6 +61,8 @@ Fallback-заявки из `leads/` старше 60 дней удаляются 
 - Заголовки: `X-Content-Type-Options`, `X-Frame-Options: DENY`, `Referrer-Policy`,
   `Permissions-Policy`, CSP (Google Fonts + iframe карты учтены);
 - Запрет индексации каталогов (`Options -Indexes`);
-- Блокировка прямого доступа к `leads/` и `vendor/`.
+- Блокировка прямого доступа к `leads/` и `vendor/`;
+- Сжатие gzip (`mod_deflate`), кэширование статики (`mod_expires`),
+  лимит POST-запроса 64 КБ (`LimitRequestBody`).
 
 Требует Apache с модулями `mod_rewrite` и `mod_headers` (стандарт на большинстве хостингов).

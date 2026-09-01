@@ -35,3 +35,34 @@
 
 # 5. Наложение каталогов / индексация
 Options -Indexes
+
+# 6. Сжатие (gzip) для текстовых типов
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json image/svg+xml
+</IfModule>
+
+# 7. Кэширование статики: изображения и шрифты — на 30 дней, css/js — на 7 дней
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+  ExpiresByType font/woff2 "access plus 30 days"
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+</IfModule>
+<IfModule mod_headers.c>
+  <FilesMatch "\.(?:png|jpe?g|webp|svg|ico|woff2?)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(?:css|js)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(?:html|php)$">
+    Header set Cache-Control "no-cache"
+  </FilesMatch>
+</IfModule>
+
+# 8. Лимит входящих POST-запросов (заявка формы — хватает с запасом)
+LimitRequestBody 65536
