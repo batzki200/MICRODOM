@@ -430,8 +430,8 @@ a {
 }
 
 .price-row__price {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
   font-size: 20px;
   color: var(--accent);
   letter-spacing: -0.01em;
@@ -1054,39 +1054,6 @@ a {
 
 .contact-form__status.err {
   color: var(--accent);
-}
-
-/* ===== Helvetica в форме заявки ===== */
-.contacts__form-wrap {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.contacts__form-wrap .contact-form__title {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 700;
-}
-
-.contacts__form-wrap .contact-form__subtitle,
-.contacts__form-wrap .contact-form__status {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.contacts__form-wrap .field__label {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.contacts__form-wrap .field__input {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-}
-
-.contacts__form-wrap .btn--accent {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 600;
-}
-
-.contacts__form-wrap .btn--ghost {
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  font-weight: 600;
 }
 
 /* ===== Footer ===== */
