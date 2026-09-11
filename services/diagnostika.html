@@ -163,8 +163,18 @@
               <li>Сложные случаи (после залития, поиск нестабильной неисправности) занимают больше времени - предупреждаем об этом заранее</li>
             </ul>
           </div>
-          <a class="btn btn--accent btn--full" href="../index.html#contacts">Оставить заявку</a>
-          <a class="btn btn--ghost btn--full" href="tel:+375173352755">+375 (17) 335-27-55</a>
+          <div class="srv-box" data-estimate>
+            <h3 class="srv-box__title">Оценить стоимость заранее</h3>
+            <select class="estimate__select" aria-label="Причина обращения">
+              <option data-price="диагностика бесплатно">Ноутбук не включается или перезагружается</option>
+              <option data-price="диагностика бесплатно">Греется, тормозит - ищу причину</option>
+              <option data-price="диагностика бесплатно">После залития или удара нужна оценка</option>
+              <option data-price="диагностика бесплатно">Проверка ноутбука перед покупкой</option>
+            </select>
+            <div class="estimate__price"></div>
+            <a class="btn btn--accent btn--full estimate__link" href="#" target="_blank" rel="noopener">Записаться на диагностику в Telegram</a>
+          </div>
+          <a class="btn btn--ghost btn--full" href="../index.html#contacts">Оставить заявку</a>
         </aside>
       </div>
     </div>
@@ -179,5 +189,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../estimate.js"></script>
 </body>
 </html>

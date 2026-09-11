@@ -164,8 +164,18 @@
               <li>Сложность разборки - отдельные модели требуют полной разборки корпуса</li>
             </ul>
           </div>
-          <a class="btn btn--accent btn--full" href="../index.html#contacts">Оставить заявку</a>
-          <a class="btn btn--ghost btn--full" href="tel:+375173352755">+375 (17) 335-27-55</a>
+          <div class="srv-box" data-estimate>
+            <h3 class="srv-box__title">Оценить стоимость заранее</h3>
+            <select class="estimate__select" aria-label="Проблема с экраном">
+              <option data-price="от 49 BYN + стоимость матрицы">Трещины, сколы, паутина после удара</option>
+              <option data-price="от 49 BYN + стоимость матрицы">Вертикальные полосы, пятна, засветы</option>
+              <option data-price="от 49 BYN + стоимость матрицы">Чёрный или белый экран при рабочем ноутбуке</option>
+              <option data-price="стоимость уточняется">Сенсорная панель или 4K</option>
+            </select>
+            <div class="estimate__price"></div>
+            <a class="btn btn--accent btn--full estimate__link" href="#" target="_blank" rel="noopener">Узнать точную цену в Telegram</a>
+          </div>
+          <a class="btn btn--ghost btn--full" href="../index.html#contacts">Оставить заявку</a>
         </aside>
       </div>
     </div>
@@ -180,5 +190,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../estimate.js"></script>
 </body>
 </html>

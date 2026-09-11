@@ -231,6 +231,11 @@ if (!$sent) {
     }
     $file = $dir . '/lead_' . date('Y-m-d_H-i-s') . '_' . bin2hex(random_bytes(3)) . '.txt';
     $saved = @file_put_contents($file, "Тема: $subject\r\n$body\r\n");
+    if (!empty($saved)) {
+        error_log('Заявка не ушла на почту, сохранена в fallback: ' . substr(basename($file), 0, 40));
+    } else {
+        error_log('КРИТИЧНО: почта не отправилась и fallback-запись не удалась (' . $dir . '). Заявка потеряна.');
+    }
 }
 
 // Чистим старые fallback-заявки (не чаще раза в сутки).

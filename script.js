@@ -18,7 +18,6 @@ const form = document.getElementById('contactForm');
 if (form) {
   const statusEl = document.getElementById('formStatus');
   const PHONE_RE = /^(?:\+?375|80)\s?\(?\d{2}\)?[\s-]?\d{3}[\s-]?\d{2}[\s-]?\d{2}$/;
-  const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
   const formStart = Date.now();
 
@@ -40,17 +39,12 @@ if (form) {
 
     const name = form.name.value.trim();
     const phone = form.phone.value.trim();
-    const email = form.email.value.trim();
-    const device = form.device.value.trim();
-    const message = form.message.value.trim();
 
     let error = '';
     if (!name) {
       error = 'Укажите ваше имя';
     } else if (!phone || !PHONE_RE.test(phone)) {
       error = 'Укажите корректный номер, например +375 (29) 123-45-67';
-    } else if (email && !EMAIL_RE.test(email)) {
-      error = 'Проверьте формат e-mail';
     }
 
     setFieldStates(error);
@@ -62,9 +56,6 @@ if (form) {
     const data = new FormData(form);
     data.set('name', name);
     data.set('phone', phone);
-    data.set('email', email);
-    data.set('device', device);
-    data.set('message', message);
     data.set('start', String(formStart));
     data.set('sent_at', String(Date.now()));
 
@@ -87,23 +78,19 @@ if (form) {
     const map = {
       name: !form.name.value.trim(),
       phone: !form.phone.value.trim(),
-      email: !!(form.email.value.trim() && !EMAIL_RE.test(form.email.value.trim())),
     };
     if (errorMsg === 'Укажите ваше имя') map.name = true;
     if (errorMsg && errorMsg.includes('номер')) map.phone = true;
-    if (errorMsg && errorMsg.includes('e-mail')) map.email = true;
 
     const inputs = {
       name: form.name,
       phone: form.phone,
-      email: form.email,
     };
     for (const key of Object.keys(inputs)) {
       inputs[key].classList.toggle('field__input--invalid', !!map[key]);
     }
     form.phone.addEventListener('input', () => form.phone.classList.remove('field__input--invalid'), { once: true });
     form.name.addEventListener('input', () => form.name.classList.remove('field__input--invalid'), { once: true });
-    form.email.addEventListener('input', () => form.email.classList.remove('field__input--invalid'), { once: true });
   }
 
   function showStatus(text, type) {

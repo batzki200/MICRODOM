@@ -164,8 +164,18 @@
               <li>Если вскрытие покажет износ кулера - предложим замену, но только с вашего согласия</li>
             </ul>
           </div>
-          <a class="btn btn--accent btn--full" href="../index.html#contacts">Оставить заявку</a>
-          <a class="btn btn--ghost btn--full" href="tel:+375173352755">+375 (17) 335-27-55</a>
+          <div class="srv-box" data-estimate>
+            <h3 class="srv-box__title">Оценить стоимость заранее</h3>
+            <select class="estimate__select" aria-label="Симптом перегрева">
+              <option data-price="от 35 BYN">Корпус сильно греется, шумит вентилятор</option>
+              <option data-price="от 35 BYN">Тормозит под нагрузкой</option>
+              <option data-price="от 35 BYN">Выключается или перезагружается в играх</option>
+              <option data-price="от 55 BYN">Игровой ноутбук с мощной системой охлаждения</option>
+            </select>
+            <div class="estimate__price"></div>
+            <a class="btn btn--accent btn--full estimate__link" href="#" target="_blank" rel="noopener">Узнать точную цену в Telegram</a>
+          </div>
+          <a class="btn btn--ghost btn--full" href="../index.html#contacts">Оставить заявку</a>
         </aside>
       </div>
     </div>
@@ -180,5 +190,6 @@
 </footer>
 
 <script src="../script.js"></script>
+<script src="../estimate.js"></script>
 </body>
 </html>

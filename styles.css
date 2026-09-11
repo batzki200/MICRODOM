@@ -747,6 +747,40 @@ a {
   font-weight: 700;
 }
 
+/* ===== Оценка стоимости (калькулятор) ===== */
+.estimate__select {
+  display: block;
+  width: 100%;
+  font-family: var(--font);
+  font-size: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: var(--bg-soft);
+  color: var(--dark);
+  margin-bottom: 10px;
+}
+
+.estimate__select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.estimate__price {
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  font-size: 28px;
+  color: var(--accent);
+  margin: 4px 0 14px;
+  letter-spacing: -0.02em;
+  min-height: 30px;
+}
+
+.estimate__link--off {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
 /* ===== Reviews ===== */
 .reviews {
   padding: 84px 0;
@@ -894,13 +928,40 @@ a {
   color: #ffb09f;
 }
 
-.contacts .btn--ghost {
-  color: #fff;
-  border-color: rgba(255, 255, 255, 0.3);
+.contacts__form-wrap .btn--accent {
+  background: #ff5138;
+  border-radius: 2px;
+  box-shadow: none;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 15px;
+  padding: 16px 24px;
 }
 
-.contacts .btn--ghost:hover {
-  border-color: #fff;
+.contacts__form-wrap .btn--accent:hover {
+  background: #e5402a;
+  transform: none;
+}
+
+.contacts__form-wrap .btn--ghost {
+  color: var(--dark);
+  border: 2px solid var(--dark);
+  border-radius: 2px;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 15px;
+  padding: 16px 24px;
+}
+
+.contacts__form-wrap .btn--ghost:hover {
+  border-color: #ff5138;
+  color: #ff5138;
+  transform: none;
+  box-shadow: none;
 }
 
 /* ===== Contact form ===== */
@@ -913,8 +974,11 @@ a {
 }
 
 .contact-form__title {
-  font-size: 22px;
-  font-weight: 800;
+  font-family: 'Russo One', Arial, sans-serif;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  font-size: 24px;
   color: var(--dark);
   margin-bottom: 4px;
 }
@@ -1413,9 +1477,5 @@ a {
 
   .field__input {
     background: var(--bg-soft);
-  }
-
-  .contacts .btn--ghost {
-    border-color: rgba(255, 255, 255, 0.25);
   }
 }
